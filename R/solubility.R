@@ -17,7 +17,6 @@ GriffinHLB <- function(Mh, M) {
   20 * Mh / M
 }
 
-
 #' @export
 pHAN <- HansenParameter <- function(frag, vol) {
   sum(frag^2)/v
@@ -46,6 +45,17 @@ xFH <- FloryHugginsInteractionParameter <- function(dHmix=NULL, nsolv=NULL, phi=
   dHmix/(kboltz * temp * nsolv * phi)
 }
 
+#' Calculate the natural log of the mole fraction of a solute at
+#' saturation of an ideal solution as a function of the heat of fusion.
+#' @param dHf Molar enthalpy of fusion
+#' @param tempS Temperature of the solution
+#' @param tempF Melting point of the solid
+#' @references Hojjati, H., & Rohani, S. (2006). Measurement and Prediction of Solubility of Paracetamol in Water−Isopropanol Solution. Part 2. Prediction. Organic Process Research & Development, 10(6), 1110–1118. doi:10.1021/op060074g 
+#' @export
+dHfusion <- function(dHf, tempS, tempF) {
+  - dHf / Rgas * (1/tempS - 1/tempF)
+}
+
 #' @export
 A12 <- function(d1, d2, partial=F) {
   a12 <- (d1-d2)^2
@@ -57,8 +67,4 @@ A12 <- function(d1, d2, partial=F) {
 xFHapprox <- function(vol, A12, temp, beta=0) {
   vol * A12 / (Rgas * temp) + beta
 }
-
-
-
-
 
