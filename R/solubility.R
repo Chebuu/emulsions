@@ -8,6 +8,17 @@ logP <- function(a, f, k) {
 }
 
 #' @export
+DaviesHLB <- function(H, n) {
+  7 + sum(H) - n * 0.475
+}
+
+#' @export
+GriffinHLB <- function(Mh, M) {
+  20 * Mh / M
+}
+
+
+#' @export
 pHAN <- HansenParameter <- function(frag, vol) {
   sum(frag^2)/v
 }
@@ -43,7 +54,7 @@ A12 <- function(d1, d2, partial=F) {
 }
 
 #' @export
-xFHapprx <- function(vol, A12, temp, beta=0) {
+xFHapprox <- function(vol, A12, temp, beta=0) {
   vol * A12 / (Rgas * temp) + beta
 }
 
