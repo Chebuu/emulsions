@@ -7,13 +7,18 @@ logP <- function(a, f, k) {
   sum(a * f + Cm * k)
 }
 
+#' @details More reliable for ionic surfactants
+#' @references 10.1.1.473.424
 #' @export
 DaviesHLB <- function(H, n) {
+  https://en.wikipedia.org/wiki/Hydrophilic-lipophilic_balance
   7 + sum(H) - n * 0.475
 }
 
+#' @details More reliable for non-ionic surfactants
 #' @export
 GriffinHLB <- function(Mh, M) {
+  https://en.wikipedia.org/wiki/Hydrophilic-lipophilic_balance
   20 * Mh / M
 }
 

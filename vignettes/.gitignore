@@ -1,0 +1,5 @@
+*.html
+*.R
+
+install-rcdk.Rmd
+retinol.Rmd

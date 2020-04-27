@@ -1,0 +1,32 @@
+---
+title: "Particle settling in a disperse system"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Particle settling in a disperse system}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(emulsions)
+diff(diff(c(375,750,1500,3000)))
+systems.size <- data.frame(
+  'Particle.Diameter'=c(150,300,750,1500,3000),
+  'Particle.Density'=c(2.5,2.5,2.5,2.5,2.5),
+  'Medium.Density'=c(1.2,1.2,1.2,1.2,1.2),
+  'Medium.Viscosity'=c(20,20,20,20,20)
+)
+systems.rate <- apply(systems.size, 1, function(s) {
+  StokesRate(s[[1]],s[[2]],s[[3]],s[[4]])
+})
+y <- systems.rate
+x <- systems.size$Particle.Diameter
+plot(x, y)
+```
